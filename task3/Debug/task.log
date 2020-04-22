@@ -1,0 +1,6 @@
+﻿  task.cpp
+C:\Users\═рЄр\Desktop\IPS\task2\task_for_third_class\task3\task.cpp(86): warning #3947: "_Cilk_for" has been deprecated, and will be removed in a future release.  Please refer to release notes for details and recommended alternatives
+    		cilk_for(int i = k + 1; i < rows; ++i) //чфхё№ k - ёЄюысхЎ (юёэ), i - ёЄЁюър
+    		^
+  
+  task.vcxproj -> C:\Users\Ната\Desktop\IPS\task2\task_for_third_class\task3\Debug\Task.exe
