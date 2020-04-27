@@ -75,7 +75,7 @@ duration<double> SerialGaussMethod(double **matrix, const int rows, double* resu
 	return duration;
 }
 
-/*duration<double> ParallelGaussMethod(double **matrix, const int rows, double* result)
+duration<double> ParallelGaussMethod(double **matrix, const int rows, double* result)
 {
 	int k;
 	high_resolution_clock::time_point t1 = high_resolution_clock::now();
@@ -113,7 +113,7 @@ duration<double> SerialGaussMethod(double **matrix, const int rows, double* resu
 		result[k] /= matrix[k][k];
 	}
 	return duration;
-}*/
+}
 
 
 
@@ -122,9 +122,10 @@ int main()
 	srand((unsigned)time(0));
 
 	int i;
-
+	/*
+	//Исходная часть
 	// кол-во строк в матрице, приводимой в качестве примера
-	/*const int test_matrix_lines = 4;
+	const int test_matrix_lines = 4;
 
 	double **test_matrix = new double*[test_matrix_lines];
 
@@ -162,8 +163,10 @@ int main()
 	for (i = 0; i < test_matrix_lines; ++i)
 	{
 		printf("x(%d) = %lf\n", i, result[i]);
-	}*/
-	//My_part--------------------------------------------
+	}
+	//Конец исходной части
+	*/
+	//Новая матрица
 	double **test_matrix = new double*[MATRIX_SIZE];
 	for (i = 0; i < MATRIX_SIZE; ++i)
 	{
@@ -172,12 +175,12 @@ int main()
 	double *result = new double[MATRIX_SIZE];
 	InitMatrix(test_matrix);
 
-	//duration<double> parallel_duration = ParallelGaussMethod(test_matrix, MATRIX_SIZE, result);
+	duration<double> parallel_duration = ParallelGaussMethod(test_matrix, MATRIX_SIZE, result);
 	duration<double> serial_duration = SerialGaussMethod(test_matrix, MATRIX_SIZE, result);
-	//std::cout << "Result:" << std::endl;
-	//std::cout << "Serial Duration is: " << serial_duration.count() << " seconds" << std::endl;
-	//std::cout << "Parallel Duration is: " << parallel_duration.count() << " seconds" << std::endl;
-	//std::cout << "Acceleration is: " << serial_duration.count() - parallel_duration.count() << " seconds" << std::endl;
+	std::cout << "Result:" << std::endl;
+	std::cout << "Serial Duration is: " << serial_duration.count() << " seconds" << std::endl;
+	std::cout << "Parallel Duration is: " << parallel_duration.count() << " seconds" << std::endl;
+	std::cout << "Acceleration is: " << serial_duration.count() - parallel_duration.count() << " seconds" << std::endl;
 
 	for (i = 0; i < MATRIX_SIZE; ++i)
 	{
@@ -189,7 +192,7 @@ int main()
 	{
 		printf("x(%d) = %lf\n", i, result[i]);
 	}
-	//END: My_part----------------------------------------
+	//Конец новой матрицы
 	delete[] test_matrix;
 	delete[] result;
 
